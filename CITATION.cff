@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the gatekeeper paper below."
+title: "Learning to Judge Research Ideas: research artifact for an Organization Science Stage 1 submission"
+authors:
+  - family-names: Li
+    given-names: Ning
+  - family-names: Gong
+    given-names: Ziqing
+  - family-names: Zhou
+    given-names: Huaikang
+license: MIT
+repository-code: "https://github.com/ln9527/research-judgment-studio"
+preferred-citation:
+  type: article
+  title: "LLMs learn scientific taste from institutional traces across the social sciences"
+  authors:
+    - family-names: Gong
+      given-names: Ziqing
+    - family-names: Li
+      given-names: Ning
+    - family-names: Zhou
+      given-names: Huaikang
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:2603.16659"

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:local:taste-learning-ledger:1.0",
+  "title": "Taste-as-learning-signal experiment ledger",
+  "description": "Structural schema. ledger.py additionally enforces cross-arm identity, fingerprints, revisions, budgets, and blind-rating completeness.",
+  "type": "object",
+  "required": ["schema_version", "study_id", "fixture_status", "provenance", "dimensions", "modes", "events"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "study_id": {"type": "string", "minLength": 1},
+    "fixture_status": {"enum": ["synthetic_only", "governed_human_study"]},
+    "governance": {
+      "type": "object",
+      "required": ["status", "protocol_reference"],
+      "properties": {
+        "status": {"const": "approved_or_determined"},
+        "protocol_reference": {"type": "string", "minLength": 1}
+      }
+    },
+    "provenance": {"type": "object"},
+    "dimensions": {"const": ["novelty", "value", "feasibility"]},
+    "modes": {
+      "type": "object",
+      "required": ["fixed_pool", "iterative_search", "unaided_transfer"],
+      "properties": {
+        "fixed_pool": {
+          "type": "object",
+          "required": ["k", "external_outcomes_blinded", "external_outcome_source", "arms"],
+          "properties": {
+            "k": {"type": "integer", "minimum": 1},
+            "external_outcomes_blinded": {"const": true},
+            "external_outcome_source": {"type": "string", "minLength": 1},
+            "arms": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/fixedPoolArm"}}
+          }
+        },
+        "iterative_search": {
+          "type": "object",
+          "required": ["budget_ceiling", "budget_claim", "arms"],
+          "properties": {
+            "budget_ceiling": {"type": "object", "required": ["model_calls", "tokens"], "properties": {"model_calls": {"type": "integer", "minimum": 1}, "tokens": {"type": "integer", "minimum": 1}}},
+            "budget_claim": {"const": "ceiling_only_not_strict_equality"},
+            "arms": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/iterativeArm"}}
+          }
+        },
+        "unaided_transfer": {"type": "object", "required": ["tasks"], "properties": {"tasks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/transferTask"}}}}
+      }
+    },
+    "events": {"type": "array", "items": {"$ref": "#/$defs/event"}},
+    "external_blind_ratings": {"type": "array", "items": {"$ref": "#/$defs/rating"}}
+  },
+  "$defs": {
+    "tasteLabel": {"enum": ["exceptional", "strong", "fair", "limited", null]},
+    "fixedPoolArm": {
+      "type": "object", "required": ["arm_id", "condition", "candidates"],
+      "properties": {"arm_id": {"type": "string", "minLength": 1}, "condition": {"type": "string", "minLength": 1}, "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}}}
+    },
+    "candidate": {
+      "type": "object", "required": ["candidate_id", "text", "content_sha256", "selected"],
+      "properties": {"candidate_id": {"type": "string", "minLength": 1}, "text": {"type": "string"}, "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "selected": {"type": "boolean"}, "taste_label": {"$ref": "#/$defs/tasteLabel"}}
+    },
+    "iterativeArm": {
+      "type": "object", "required": ["arm_id", "condition", "revisions"],
+      "properties": {"arm_id": {"type": "string", "minLength": 1}, "condition": {"type": "string", "minLength": 1}, "revisions": {"type": "array", "items": {"$ref": "#/$defs/revision"}}}
+    },
+    "revision": {
+      "type": "object", "required": ["revision_id", "parent_revision_id", "text", "content_sha256", "model_calls", "tokens", "provenance"],
+      "properties": {"revision_id": {"type": "string", "minLength": 1}, "parent_revision_id": {"type": ["string", "null"]}, "text": {"type": "string"}, "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "model_calls": {"type": "integer", "minimum": 0}, "tokens": {"type": "integer", "minimum": 0}, "taste_label": {"$ref": "#/$defs/tasteLabel"}, "provenance": {"type": "object"}}
+    },
+    "transferTask": {"type": "object", "required": ["task_id", "condition", "prompt"], "properties": {"task_id": {"type": "string", "minLength": 1}, "condition": {"const": "unaided"}, "prompt": {"type": "string"}}},
+    "event": {"type": "object", "required": ["event_id", "event_type", "timestamp", "provenance"], "properties": {"event_id": {"type": "string", "minLength": 1}, "event_type": {"type": "string"}, "timestamp": {"type": "string"}, "provenance": {"type": "object"}}},
+    "rating": {"type": "object", "required": ["blind_id", "reviewer_code", "dimension", "rating"], "properties": {"blind_id": {"type": "string"}, "reviewer_code": {"type": "string"}, "dimension": {"enum": ["novelty", "value", "feasibility"]}, "rating": {"type": "integer", "minimum": 1, "maximum": 7}}}
+  },
+  "additionalProperties": true
+}

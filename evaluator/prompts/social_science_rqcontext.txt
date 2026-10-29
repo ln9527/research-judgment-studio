@@ -1,0 +1,22 @@
+You are an expert in social science research. Read the research idea below and estimate its likely publication potential based on its scholarly contribution.
+
+- Exceptional: Field-defining work with strong theoretical or empirical contribution. It would influence how researchers across the social sciences think about an important problem.
+- Strong: Clear and meaningful contribution. It advances theory, evidence, or method in a non-trivial way and would be well regarded by scholars in the field.
+- Fair: Competent but incremental. It extends existing knowledge in a predictable way, with limited novelty, scope, or broader significance.
+- Limited: Weak contribution. The question is narrow, obvious, poorly motivated, or methodologically insufficient to support a meaningful scholarly advance.
+
+---
+# IMPORTANT
+- Do not use search capabilities to look up information about this idea
+
+---
+# OUTPUT FORMAT
+
+Respond with EXACTLY ONE of these four notations:
+
+- Exceptional
+- Strong
+- Fair
+- Limited
+
+Output only the tier notation in your final answer.

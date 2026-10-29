@@ -1,0 +1,11 @@
+comparator,accuracy_pct
+Chance,25.0
+Frontier mean (11 models),31.1
+Best frontier (Gemini 3.1 Pro),38.8
+Junior individual mean (n = 174),31.7
+Junior majority vote,40.8
+Expert individual mean (n = 48),36.2
+Expert majority vote,41.6
+Fine-tuned GPT-4.1-nano,57.5
+Fine-tuned Qwen3-30B-A3B,58.3
+Fine-tuned Qwen3-4B,59.2

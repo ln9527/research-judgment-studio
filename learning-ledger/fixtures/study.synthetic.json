@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0",
+  "study_id": "synthetic-taste-learning-demo",
+  "fixture_status": "synthetic_only",
+  "purpose": "Demonstrate data controls for taste as a learning signal; all records and outcomes are invented.",
+  "provenance": {
+    "created_by": "fixture generator",
+    "created_at": "2026-10-17T00:00:00Z",
+    "source": "synthetic; no external or participant data"
+  },
+  "dimensions": [
+    "novelty",
+    "value",
+    "feasibility"
+  ],
+  "modes": {
+    "fixed_pool": {
+      "description": "Same candidate pool and candidate text hashes across arms; compare fixed-k selection.",
+      "k": 2,
+      "external_outcomes_blinded": true,
+      "external_outcome_source": "synthetic independent rubric scores, invented for software tests",
+      "arms": [
+        {
+          "arm_id": "FP-T",
+          "condition": "taste_guided",
+          "candidates": [
+            {
+              "candidate_id": "C001",
+              "text": "Research question: How does algorithmic ranking feedback shape employee exploration? Mechanism: visible rank cues may redirect attention from low-ranked but novel options.",
+              "content_sha256": "2bfd3afac7317818d62b55a2f04898a9587ef32458b6ee75dd6f893b2c926ac0",
+              "selected": true,
+              "taste_label": "exceptional"
+            },
+            {
+              "candidate_id": "C002",
+              "text": "Research question: When does peer mentoring transfer judgment across teams? Mechanism: shared cases may help novices learn tacit standards, with weaker transfer across professional boundaries.",
+              "content_sha256": "c911078ef7256e9daa9fd57444006b3331707e15eca5df5c3be01fcecfe7a4e3",
+              "selected": false,
+              "taste_label": "fair"
+            },
+            {
+              "candidate_id": "C003",
+              "text": "Research question: How does opaque evaluation authority affect employee voice? Mechanism: uncertainty about who or what evaluates may increase conformity and reduce dissent.",
+              "content_sha256": "b622a80bd9c3428ae01b9d9e4b941be528a6e0bfc0fb2bcda95b3dc743da31ae",
+              "selected": false,
+              "taste_label": "strong"
+            },
+            {
+              "candidate_id": "C004",
+              "text": "Research question: How do collaboration networks affect novelty in research teams? Mechanism: bridging ties may expose teams to distant knowledge while dense ties help integrate it.",
+              "content_sha256": "90b009d68a6e572161afba67a61b9e2dee15873aee3acd84b77b9a7bd0d330ad",
+              "selected": true,
+              "taste_label": "limited"
+            }
+          ]
+        },
+        {
+          "arm_id": "FP-B",
+          "condition": "baseline",
+          "candidates": [
+            {
+              "candidate_id": "C001",
+              "text": "Research question: How does algorithmic ranking feedback shape employee exploration? Mechanism: visible rank cues may redirect attention from low-ranked but novel options.",
+              "content_sha256": "2bfd3afac7317818d62b55a2f04898a9587ef32458b6ee75dd6f893b2c926ac0",
+              "selected": false,
+              "taste_label": null
+            },
+            {
+              "candidate_id": "C002",
+              "text": "Research question: When does peer mentoring transfer judgment across teams? Mechanism: shared cases may help novices learn tacit standards, with weaker transfer across professional boundaries.",
+              "content_sha256": "c911078ef7256e9daa9fd57444006b3331707e15eca5df5c3be01fcecfe7a4e3",
+              "selected": true,
+              "taste_label": null
+            },
+            {
+              "candidate_id": "C003",
+              "text": "Research question: How does opaque evaluation authority affect employee voice? Mechanism: uncertainty about who or what evaluates may increase conformity and reduce dissent.",
+              "content_sha256": "b622a80bd9c3428ae01b9d9e4b941be528a6e0bfc0fb2bcda95b3dc743da31ae",
+              "selected": true,
+              "taste_label": null
+            },
+            {
+              "candidate_id": "C004",
+              "text": "Research question: How do collaboration networks affect novelty in research teams? Mechanism: bridging ties may expose teams to distant knowledge while dense ties help integrate it.",
+              "content_sha256": "90b009d68a6e572161afba67a61b9e2dee15873aee3acd84b77b9a7bd0d330ad",
+              "selected": false,
+              "taste_label": null
+            }
+          ]
+        },
+        {
+          "arm_id": "FP-R",
+          "condition": "random",
+          "candidates": [
+            {
+              "candidate_id": "C001",
+              "text": "Research question: How does algorithmic ranking feedback shape employee exploration? Mechanism: visible rank cues may redirect attention from low-ranked but novel options.",
+              "content_sha256": "2bfd3afac7317818d62b55a2f04898a9587ef32458b6ee75dd6f893b2c926ac0",
+              "selected": true,
+              "taste_label": null
+            },
+            {
+              "candidate_id": "C002",
+              "text": "Research question: When does peer mentoring transfer judgment across teams? Mechanism: shared cases may help novices learn tacit standards, with weaker transfer across professional boundaries.",
+              "content_sha256": "c911078ef7256e9daa9fd57444006b3331707e15eca5df5c3be01fcecfe7a4e3",
+              "selected": false,
+              "taste_label": null
+            },
+            {
+              "candidate_id": "C003",
+              "text": "Research question: How does opaque evaluation authority affect employee voice? Mechanism: uncertainty about who or what evaluates may increase conformity and reduce dissent.",
+              "content_sha256": "b622a80bd9c3428ae01b9d9e4b941be528a6e0bfc0fb2bcda95b3dc743da31ae",
+              "selected": true,
+              "taste_label": null
+            },
+            {
+              "candidate_id": "C004",
+              "text": "Research question: How do collaboration networks affect novelty in research teams? Mechanism: bridging ties may expose teams to distant knowledge while dense ties help integrate it.",
+              "content_sha256": "90b009d68a6e572161afba67a61b9e2dee15873aee3acd84b77b9a7bd0d330ad",
+              "selected": false,
+              "taste_label": null
+            }
+          ]
+        }
+      ]
+    },
+    "iterative_search": {
+      "description": "Separate iterative search. Budgets are ceilings, not strict equality.",
+      "budget_ceiling": {
+        "model_calls": 8,
+        "tokens": 12000
+      },
+      "budget_claim": "ceiling_only_not_strict_equality",
+      "arms": [
+        {
+          "arm_id": "IS-T",
+          "condition": "taste_guided",
+          "revisions": [
+            {
+              "revision_id": "A-r1",
+              "candidate_id": "A-C1",
+              "parent_revision_id": null,
+              "model_calls": 2,
+              "tokens": 2400,
+              "taste_label": "strong",
+              "provenance": {
+                "model": "synthetic-placeholder",
+                "prompt_version": "fixture-1",
+                "operation": "invented record"
+              },
+              "text": "Synthetic draft: algorithmic ranking feedback and exploration. Mechanism: feedback changes search attention.",
+              "content_sha256": "c7e9f072b55af9b5301654ba518d491cd798233c60562e59e4d2403d6578b3ff"
+            },
+            {
+              "revision_id": "A-r2",
+              "candidate_id": "A-C1",
+              "parent_revision_id": "A-r1",
+              "model_calls": 1,
+              "tokens": 1300,
+              "taste_label": "exceptional",
+              "provenance": {
+                "model": "synthetic-placeholder",
+                "prompt_version": "fixture-1",
+                "operation": "invented record"
+              },
+              "text": "Synthetic revision: peer mentoring transfers judgment through shared cases. Mechanism: tacit standards travel across team boundaries.",
+              "content_sha256": "eaf4b6d15ee6ef92f136f335250b78d4c2652c611856f69e29f5169fc1d236d3"
+            }
+          ]
+        },
+        {
+          "arm_id": "IS-B",
+          "condition": "baseline",
+          "revisions": [
+            {
+              "revision_id": "B-r1",
+              "candidate_id": "B-C1",
+              "parent_revision_id": null,
+              "model_calls": 3,
+              "tokens": 3900,
+              "taste_label": null,
+              "provenance": {
+                "model": "synthetic-placeholder",
+                "prompt_version": "fixture-1",
+                "operation": "invented record"
+              },
+              "text": "Synthetic baseline draft: opaque evaluation authority and employee voice. Mechanism: uncertainty changes dissent.",
+              "content_sha256": "debd8e4578fe9577932c3f9c0ab4802595c812bcb3e1c63b73ab7fbfc6503a2f"
+            },
+            {
+              "revision_id": "B-r2",
+              "candidate_id": "B-C1",
+              "parent_revision_id": "B-r1",
+              "model_calls": 2,
+              "tokens": 2800,
+              "taste_label": null,
+              "provenance": {
+                "model": "synthetic-placeholder",
+                "prompt_version": "fixture-1",
+                "operation": "invented record"
+              },
+              "text": "Synthetic baseline revision: collaboration networks and research novelty. Mechanism: bridging ties expose teams to distant knowledge.",
+              "content_sha256": "f67e6bac44d4f9961e5a9ba031607405b7407e3908e2ee154d400fbaa8c2aa72"
+            }
+          ]
+        },
+        {
+          "arm_id": "IS-R",
+          "condition": "random",
+          "revisions": [
+            {
+              "revision_id": "R-r1",
+              "candidate_id": "R-C1",
+              "parent_revision_id": null,
+              "model_calls": 2,
+              "tokens": 2100,
+              "taste_label": null,
+              "provenance": {
+                "model": "synthetic-placeholder",
+                "prompt_version": "fixture-1",
+                "operation": "invented record"
+              },
+              "text": "Synthetic randomized draft: peer mentoring transfers judgment in teams.",
+              "content_sha256": "546861969b9ed576016de3b448366e4e47820989244b9b8251b4a07bb959af76"
+            },
+            {
+              "revision_id": "R-r2",
+              "candidate_id": "R-C1",
+              "parent_revision_id": "R-r1",
+              "model_calls": 1,
+              "tokens": 1700,
+              "taste_label": null,
+              "provenance": {
+                "model": "synthetic-placeholder",
+                "prompt_version": "fixture-1",
+                "operation": "invented record"
+              },
+              "text": "Synthetic randomized revision: algorithmic feedback changes exploration.",
+              "content_sha256": "38385ae4bd3e3e3042215d85daacebf981b0a1a115b486ec7367f322727cb420"
+            }
+          ]
+        }
+      ]
+    },
+    "unaided_transfer": {
+      "description": "Transfer task collected without taste feedback; task responses remain distinct from generation rounds.",
+      "tasks": [
+        {
+          "task_id": "UT-01",
+          "condition": "unaided",
+          "prompt": "Invent an organizational practice for sharing scarce expertise across small public agencies."
+        },
+        {
+          "task_id": "UT-02",
+          "condition": "unaided",
+          "prompt": "Design a way for distributed teams to notice and act on emerging coordination problems."
+        }
+      ],
+      "responses": [
+        {
+          "task_id": "UT-01",
+          "subject_code": "SYN-01",
+          "response_text": "Synthetic example: a monthly shared office-hours rota.",
+          "condition": "unaided",
+          "timestamp": "2026-10-17T00:00:00Z",
+          "provenance": "invented fixture row"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "event_id": "ev-001",
+      "event_type": "candidate_created",
+      "timestamp": "2026-10-17T00:00:00Z",
+      "provenance": {
+        "fixture": "synthetic",
+        "note": "invented content"
+      }
+    },
+    {
+      "event_id": "ev-002",
+      "event_type": "candidate_revised",
+      "timestamp": "2026-10-17T00:00:00Z",
+      "provenance": {
+        "fixture": "synthetic",
+        "note": "invented revision lineage"
+      }
+    }
+  ],
+  "external_blind_ratings": []
+}

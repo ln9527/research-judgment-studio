@@ -1,0 +1,19 @@
+{
+  "analysis": "exploratory Qwen3-4B versus human disagreement by benchmark tier",
+  "package_commit": "3e6637c7b8faec0977185185c0bd315c58a9eba2",
+  "model_key": "qwen3-4b-ob",
+  "n_benchmark_items": 120,
+  "ratings_aggregated": {
+    "experts": 384,
+    "juniors": 2530
+  },
+  "source_sha256": {
+    "data/management_deep_probe/benchmark/management_benchmark_120.jsonl": "c455aab59f46bd33cc3c8307a99bf1a4ac35463e6d450d42c56b550280865b73",
+    "data/management_deep_probe/predictions/sft_predictions.jsonl": "8f1a34fd6c3bb024ccae9c7f4080de9b8e0006ab3b5b9f79182e262ebfbbaf61",
+    "data/management_deep_probe/human_ratings/expert_ratings_deidentified.jsonl": "2798f4fa802d3ced96bffd38949abcd035fc76e915b698af4d5fce5080bf3475",
+    "data/management_deep_probe/human_ratings/student_ratings_deidentified.jsonl": "dae55d8e12753ef669a2aeb7ece9698ac10d09be4c0942420ad4cac1c98c27fa"
+  },
+  "output_sha256": "3e60b2266a8d6051bafb9daee56a91d7ff0e4b329ac5cc91e8c8d482cb0a02db",
+  "privacy": "aggregate-only output; no article keys, titles, or rater identifiers serialized",
+  "status": "exploratory, descriptive, not preregistered"
+}

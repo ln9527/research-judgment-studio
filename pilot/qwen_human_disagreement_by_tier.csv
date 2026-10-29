@@ -1,0 +1,9 @@
+benchmark_tier,human_panel,n_items,n_ratings_aggregated,qwen_accuracy_vs_journal_tier_pct,mean_share_panel_ratings_matching_qwen_pct,mean_share_panel_ratings_matching_journal_tier_pct,human_modal_items_without_tie,qwen_matches_human_modal_pct_among_untied_items,mean_within_item_human_rating_entropy_0_1
+exceptional,experts,30,96,80.0,22.8,20.8,22,27.3,0.549
+exceptional,juniors,30,632,80.0,28.6,27.0,24,33.3,0.91
+strong,experts,30,96,56.7,29.4,43.3,22,36.4,0.505
+strong,juniors,30,633,56.7,29.2,33.8,26,26.9,0.858
+fair,experts,30,96,53.3,35.3,52.2,25,40.0,0.41
+fair,juniors,30,632,53.3,33.3,37.6,26,50.0,0.893
+limited,experts,30,96,46.7,39.2,29.7,20,45.0,0.56
+limited,juniors,30,633,46.7,36.4,28.5,27,48.1,0.869

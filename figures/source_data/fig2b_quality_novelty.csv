@@ -1,0 +1,14 @@
+point,group,knn5_novelty,expected_tier_value,mean_feasibility,note
+M0 naive,baseline (GLM-5),0.300,2.411,,
+M1 gap-spotting,baseline (GLM-5),0.324,2.172,,
+M2 problematization,baseline (GLM-5),0.308,3.269,,
+M3 analogical import,baseline (GLM-5),0.355,3.662,,
+M4 phenomenon-based,baseline (GLM-5),0.357,3.193,,
+M5 theory integration,baseline (GLM-5),0.312,3.009,,
+M6 disciplined imagination,baseline (GLM-5),0.318,3.379,,
+M3v06,AR-01 winner,0.394,3.813,,management-paradox anchor
+GPT-5.4 x M3v06_E9v2,AR-02 headline,0.411,3.919,2.44,below 3.0 feasibility threshold; inadmissible
+M6v05,AR-03 admissible winner,0.379,3.390,3.380,soft analogy restricted to measurement-compatible fields
+M6v04,AR-03 admissible winner,0.341,3.472,3.375,unique-prediction filter
+Exceptional-tier journals (AMJ ASQ OS; n=300),benchmark,0.357,3.291,,
+All 12 journals (n=1200),benchmark,0.343,2.632,,

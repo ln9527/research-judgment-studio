@@ -1,0 +1,25 @@
+field,architecture,base_accuracy_pct,fine_tuned_accuracy_pct
+Psychology,Qwen3-30B-A3B,31.5,85.5
+Economics,Qwen3-30B-A3B,25.5,69.5
+Communication,Qwen3-30B-A3B,31.5,67.5
+Sociology,Qwen3-30B-A3B,28.0,65.5
+Management,Qwen3-30B-A3B,22.5,58.3
+Political science,Qwen3-30B-A3B,24.5,58.5
+Business & finance,Qwen3-30B-A3B,28.5,53.5
+Public admin.,Qwen3-30B-A3B,23.5,55.0
+Psychology,Qwen3-4B,25.0,76.0
+Economics,Qwen3-4B,25.0,64.0
+Communication,Qwen3-4B,25.0,61.0
+Sociology,Qwen3-4B,24.5,51.0
+Management,Qwen3-4B,26.7,59.2
+Political science,Qwen3-4B,25.0,50.5
+Business & finance,Qwen3-4B,25.5,53.5
+Public admin.,Qwen3-4B,25.0,51.0
+Psychology,GPT-4.1-nano,30.0,81.5
+Economics,GPT-4.1-nano,25.0,68.5
+Communication,GPT-4.1-nano,24.0,60.5
+Sociology,GPT-4.1-nano,26.5,54.0
+Management,GPT-4.1-nano,25.0,57.5
+Political science,GPT-4.1-nano,26.0,54.0
+Business & finance,GPT-4.1-nano,26.0,55.5
+Public admin.,GPT-4.1-nano,24.0,53.5
