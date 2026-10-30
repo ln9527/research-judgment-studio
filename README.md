@@ -2,6 +2,8 @@
 
 Research artifact for a Stage 1 submission to the *Organization Science* special issue "AI-Enabled Frontiers in Organizational Science".
 
+Authors: Ziqin Gong, Ning Li, and Huaikang Zhou.
+
 Public repository: https://github.com/ln9527/research-judgment-studio
 
 The project has three parts that already exist and one that is proposed:
@@ -55,4 +57,4 @@ Code: MIT. Figures, screenshots, data cards, and CSV files: CC BY 4.0. See `LICE
 
 ## Citation
 
-See `CITATION.cff`.
+Gong Z, Li N, Zhou H (2026) LLMs learn scientific taste from institutional traces across the social sciences. Preprint, arXiv:2603.16659. See `CITATION.cff`.

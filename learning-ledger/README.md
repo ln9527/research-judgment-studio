@@ -10,26 +10,27 @@ The bundled `fixtures/study.synthetic.json` and `fixtures/ratings.synthetic.csv`
 2. **Iterative search.** Each revision records parent/revision IDs, model-call and token usage, ordinal taste label (where applicable), and provenance such as model, prompt, and scorer versions. Arm-wide values are checked against declared **ceilings**. The harness never asserts strict budget equality; actual calls and tokens can differ below the ceilings.
 3. **Unaided transfer.** Separate transfer tasks are explicitly marked unaided. `import-transfer` records pseudonymous subject codes, response text, timestamp, and import provenance in a new output ledger. For human collection, first record an approved or formally determined protocol reference in the ledger's `governance` object. The synthetic fixture has no such determination because its response is fictional.
 
-The harness does not use source-journal tier labels as rewards or proof that taste labels are valid. The only allowed rating dimensions are novelty, value, and feasibility, each rated 1–7 by the independent rubric. Summaries first average ratings within each candidate, then average candidate means equally; they report `n_items`, `n_ratings`, and a separate `pooled_rating_mean` so unequal rater counts do not silently change the primary descriptive mean's item weighting. These are descriptive only: no significance tests, causal estimates, or learning claims. A real study still needs a designed assignment, frozen prompts/rubrics, a blinded rating protocol, power and missingness plans, consent/privacy decisions, and independent analysis.
+The harness does not use source-journal tier labels as rewards or proof that taste labels are valid. The only allowed rating dimensions are novelty, value, and feasibility, each rated 1 to 7 by the independent rubric. Summaries first average ratings within each candidate, then average candidate means equally; they report `n_items`, `n_ratings`, and a separate `pooled_rating_mean` so unequal rater counts do not silently change the primary descriptive mean's item weighting. These are descriptive only: no significance tests, causal estimates, or learning claims. A real study still needs a designed assignment, frozen prompts/rubrics, a blinded rating protocol, power and missingness plans, consent/privacy decisions, and independent analysis.
 
 ## Run
 
 From this directory:
 
 ```sh
+mkdir -p out
 python3 ledger.py validate fixtures/study.synthetic.json
 python3 ledger.py export-blind fixtures/study.synthetic.json \
-  --review /tmp/reviewer.csv --key-map /tmp/private-key-map.csv
+  --review out/reviewer.csv --key-map out/private-key-map.csv
 python3 ledger.py import-ratings fixtures/study.synthetic.json \
-  --blind-export /tmp/reviewer.csv --ratings fixtures/ratings.synthetic.csv \
-  --out /tmp/study-with-ratings.json
-python3 ledger.py summarize /tmp/study-with-ratings.json \
-  --key-map /tmp/private-key-map.csv --csv /tmp/descriptive-summary.csv
+  --blind-export out/reviewer.csv --ratings fixtures/ratings.synthetic.csv \
+  --out out/study-with-ratings.json
+python3 ledger.py summarize out/study-with-ratings.json \
+  --key-map out/private-key-map.csv --csv out/descriptive-summary.csv
 python3 ledger.py import-transfer fixtures/study.synthetic.json \
-  --responses fixtures/transfer-responses.synthetic.csv --out /tmp/study-with-transfer.json
+  --responses fixtures/transfer-responses.synthetic.csv --out out/study-with-transfer.json
 ```
 
-`import-ratings` rejects unknown blind IDs, duplicate reviewer × candidate × dimension rows, missing candidate/dimension coverage, invalid dimensions, and ratings outside integer range 1–7. Reviewers use study-issued pseudonymous codes, not names or email addresses. It appends normalized rows plus a provenance event to a new output file; it does not overwrite the input ledger. `import-transfer` likewise writes a new ledger and rejects unknown tasks, missing values, and duplicate task/subject responses. `validate` reports the ledger's recorded `fixture_status`; structural validity does not prove study approval or data validity.
+`import-ratings` rejects unknown blind IDs, duplicate reviewer × candidate × dimension rows, missing candidate/dimension coverage, invalid dimensions, and ratings outside integer range 1 to 7. Reviewers use study-issued pseudonymous codes, not names or email addresses. It appends normalized rows plus a provenance event to a new output file; it does not overwrite the input ledger. `import-transfer` likewise writes a new ledger and rejects unknown tasks, missing values, and duplicate task/subject responses. `validate` reports the ledger's recorded `fixture_status`; structural validity does not prove study approval or data validity.
 
 The generated reviewer CSV and private key map should be stored separately. Do not send the key map to reviewers. Avoid putting direct identifiers, confidential text, credentials, or production data in this local research artifact. The JSON Schema is a portable structural reference; the executable validator additionally checks cross-arm hashes, fixed selection counts, budget ceilings, revision ancestry and hashes, deterministic blind IDs, pool fingerprints, key-map equality, and event provenance.
 

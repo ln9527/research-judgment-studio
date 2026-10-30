@@ -2,10 +2,10 @@ cff-version: 1.2.0
 message: "If you use this repository, please cite the gatekeeper paper below."
 title: "Learning to Judge Research Ideas: research artifact for an Organization Science Stage 1 submission"
 authors:
+  - family-names: Gong
+    given-names: Ziqin
   - family-names: Li
     given-names: Ning
-  - family-names: Gong
-    given-names: Ziqing
   - family-names: Zhou
     given-names: Huaikang
 license: MIT
@@ -15,7 +15,7 @@ preferred-citation:
   title: "LLMs learn scientific taste from institutional traces across the social sciences"
   authors:
     - family-names: Gong
-      given-names: Ziqing
+      given-names: Ziqin
     - family-names: Li
       given-names: Ning
     - family-names: Zhou
